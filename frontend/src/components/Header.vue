@@ -45,7 +45,6 @@ nav {
 .nav-link {
     margin-right: 10px;
     color: #fff;
-    text-decoration: none;
     transition: .5s;
 }
 

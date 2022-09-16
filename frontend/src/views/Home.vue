@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <h1>Escolha seus produtos</h1>
     <div class="cards">
       <div class="card">
         <div class="card-header">
@@ -12,7 +11,7 @@
           <p>a partir de R$19,99</p>
         </div>
         <div class="card-bottom">
-          <button>Comprar</button>
+          <button @click="redirectToDetail()">Comprar</button>
         </div>
       </div>
 
@@ -26,7 +25,7 @@
           <p>a partir de R$19,99</p>
         </div>
         <div class="card-bottom">
-          <button>Comprar</button>
+          <button @click="redirectToDetail()">Comprar</button>
         </div>
       </div>
 
@@ -40,7 +39,7 @@
           <p>a partir de R$19,99</p>
         </div>
         <div class="card-bottom">
-          <button>Comprar</button>
+          <button @click="redirectToDetail()">Comprar</button>
         </div>
       </div>
 
@@ -54,7 +53,7 @@
           <p>a partir de R$19,99</p>
         </div>
         <div class="card-bottom">
-          <button>Comprar</button>
+          <button @click="redirectToDetail()">Comprar</button>
         </div>
       </div>
     </div>
@@ -67,7 +66,15 @@
 export default {
   name: 'Home',
   components: {
-  }
+  },
+  methods: {
+    redirectToDetail() {
+      this.$router.push('details');
+    }
+  },
+  // mounted(){
+  //   this.redirectToDetail();
+  // }
 }
 </script>
 
@@ -75,10 +82,6 @@ export default {
   .container {
     width: 88%;
     margin: 30px auto;
-  }
-
-  .container h1 { 
-    text-align: center;
   }
 
   .cards {
@@ -91,8 +94,6 @@ export default {
     width: 23%;
     margin: 10px 12px;
     border-radius: 5px;
-    -webkit-box-shadow: 5px 5px 15px -2px rgba(34,34,34,0.35); 
-    box-shadow: 5px 5px 15px -2px rgba(34,34,34,0.35);
   }
 
   .card-header {
@@ -103,21 +104,25 @@ export default {
 
   .card-body {
     padding: 10px 0px 0px 5px;
+    background-color: #fff;
   }
 
   .card-body h3,
   .card-body h6,
   .card-body p {
-    margin: 10px 0px;
+    padding: 10px 0;
     font-weight: normal;
   }
 
   .card-bottom {
     padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
   }
 
   .card-bottom button {
     padding: 10px;
+    margin-bottom: 5px;
     border: none;
     background-color: #FCBA05;
     border-radius: 5px;
@@ -127,6 +132,6 @@ export default {
   }
 
   .card-bottom button:hover {
-    background-color: #cc9a10;
+    background-color: #CC9A10;
   }
 </style>
