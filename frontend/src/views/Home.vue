@@ -92,7 +92,7 @@ export default {
 
   .card {
     width: 23%;
-    margin: 10px 12px;
+    margin: 10px 11px;
     border-radius: 5px;
   }
 

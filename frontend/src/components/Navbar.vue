@@ -29,7 +29,7 @@ export default {
 
   .categorys {
     width: 100%;
-    margin: 0 90px;
+    margin: 0 95px;
     justify-content: space-between;
     display: flex;
   }

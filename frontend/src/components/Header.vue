@@ -30,7 +30,7 @@ header {
 }
 
 #logo-link {
-    margin-left: 90px;
+    margin-left: 95px;
 }
 
 #logo {
@@ -39,7 +39,7 @@ header {
 }
 
 nav {
-    margin-right: 85px;
+    margin-right: 90px;
 }
 
 .nav-link {

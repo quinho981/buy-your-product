@@ -1,19 +1,29 @@
 <template>
   <div class="container">
-    <div class="container-img">
-        <img src="../../public/img/pia.png" alt="">
+    <div class="container-details">
+        <div class="container-img">
+            <img src="../../public/img/pia.png" alt="">
+        </div>
+        <div class="container-descriptions">
+            <h2>COMBO CUBA TURIM C’ITALIA + MISTURADOR BICA BAIXA E VÁLVULA QUADRADA BLACK JIWI</h2>
+            <h4>Cuba de Apoio Quadrada 35x35cm com Mesa Turim Branca – CItalia - CAC09.</h4>
+            <p class="value">R$19,99</p>
+            <form>
+                <p>Observações:</p>
+                <textarea name="" id=""></textarea><br>
+                <p>Quantidade:</p>
+                <input class="form-input" type="number">
+                <input class="btn" type="submit" value="Comprar">
+            </form>
+        </div>
     </div>
-    <div class="container-descriptions">
-        <h2>Nome do produto</h2>
-        <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</h5>
-        <p>a partir de R$19,99</p>
-        <form>
-            <p>Observações:</p>
-            <textarea name="" id=""></textarea><br>
-            <p>Quantidade:</p>
-            <input class="form-input" type="number">
-            <input class="btn" type="submit" value="Comprar">
-        </form>
+    <hr>
+    <div class="observations">
+        <p>Descrição</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <br>
+        <p>Descrição</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
     </div>
   </div>
 </template>
@@ -29,8 +39,11 @@ export default {
         width: 87%;
         margin: 30px auto;
         background-color: #fff;
-        display: flex;
         border-radius: 5px;
+    }
+
+    .container-details {
+        display: flex;
     }
     
     .container-img {
@@ -51,9 +64,18 @@ export default {
         border-radius: 0px 5px 5px 0px;
     }
 
-    h5, p {
+    h4, p {
         padding: 10px 0px 0px 0px;
         font-weight: normal;
+    }
+
+    h4, .value{
+        margin: 10px 0;
+    }
+
+    .value {
+        font-weight: bold;
+        font-size: 30px;
     }
 
     .form-input {
@@ -86,5 +108,19 @@ export default {
 
     .btn:hover {
         background-color: #CC9A10;
+    }
+
+    .observations {
+        display: block;
+    }
+
+    hr {
+        margin: 10px auto;
+        width: 98%;
+        background-color: red;
+    }
+
+    .observations {
+        padding: 0px 5px 10px 15px;
     }
 </style>
