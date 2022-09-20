@@ -15,6 +15,8 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('description_id')->constrained('product_descriptions');
             $table->string('product_name');
             $table->text('product_image');
             $table->double('price', 8, 2);
