@@ -17,9 +17,8 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::create([
-            'product_id' => 4,
-            'category_name' => 'Portas e janelas'
-        ]);
+        // Category::create([
+        //     'category_name' => 'Portas e janelas'
+        // ]);
     }
 }

@@ -16,9 +16,9 @@ class ProductSeeder extends Seeder
     public function run()
     {
         $product = Product::create([
-            'product_name' => 'Vaso sanitário tipo italiano - porcelanato branco', 
+            'product_name' => 'Bacia caixa acoplada fit plus branca + ASSENTO – CELITE', 
             'product_image' => Str::random(10),
-            'price' => 349.99,
+            'price' => 878.75,
         ]);
 
         $product->category()->create([
@@ -26,7 +26,15 @@ class ProductSeeder extends Seeder
         ]);
 
         $product->product_description()->create([
-            'description' => 'Vaso sanitário em porcelanato branco. Design italiano. Maior conforto e durabilidade.'
+            'description' => 'Bacia para caixa acoplada fit plus branca. Caixa acoplada 3 e 6 litros fit plus branco. Assento polipropileno fit branco.'
         ]);
+
+        // $product->order_item()->create([
+        //     'product_id' => $product->id,
+        //     'quantity' => 1,
+        //     'unit_price' => 878.75,
+        //     'total_price' => 878.75,
+        //     'observation' => ''
+        // ]);
     }
 }

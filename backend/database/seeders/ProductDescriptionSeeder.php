@@ -14,8 +14,8 @@ class ProductDescriptionSeeder extends Seeder
      */
     public function run()
     {
-        ProductDescription::create([
-            'description' => 'Vaso sanitário em porcelanato branco. Design italiano. Maior conforto e durabilidade. '
-        ]);
+        // ProductDescription::create([
+        //     'description' => 'Vaso sanitário em porcelanato branco. Design italiano. Maior conforto e durabilidade. '
+        // ]);
     }
 }
