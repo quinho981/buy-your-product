@@ -28,10 +28,8 @@
   </div>
 </template>
 
-<script>
-export default {
-    name: "ProductDetail"
-}
+<script setup>
+
 </script>
 
 <style scoped>
@@ -117,7 +115,6 @@ export default {
     hr {
         margin: 10px auto;
         width: 98%;
-        background-color: red;
     }
 
     .observations {

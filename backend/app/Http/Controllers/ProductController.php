@@ -8,8 +8,15 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function show() {
-        $product = Product::all();
 
-        return $product;
+        return Product::select(
+            'products.id', 
+            'products.product_name', 
+            'products.product_image',
+            'products.price', 
+            'product_descriptions.description'
+            )
+            ->join('product_descriptions', 'product_descriptions.product_id', '=', 'products.id')
+            ->get();
     }
 }
