@@ -9,7 +9,15 @@
             <p>a partir de R${{ product.price }}</p>
         </div>
         <div class="card-bottom">
-            <button @click="redirectToDetail()">Comprar</button>
+            <router-link class="btn" 
+                :to="{
+                    name: 'product', 
+                    params: { 
+                        id: product.id 
+                    }
+                }">
+                Comprar
+            </router-link>
         </div>
     </div>
 </template>
@@ -22,10 +30,6 @@
     const props = defineProps({
         product: Object
     })
-
-    function redirectToDetail() {
-        router.push('details');
-    }
 </script>
 
 <style scoped>
@@ -42,11 +46,14 @@
     }
 
     .card-body {
-        padding: 10px 0px 0px 5px;
+        padding: 10px 5px 0px 5px;
         background-color: #fff;
     }
 
-    .card-body h3,
+    .card-body h6 {
+        font-size: 0.74em;
+    }
+
     .card-body h6,
     .card-body p {
         padding: 10px 0;
@@ -59,18 +66,21 @@
         border-radius: 5px;
     }
 
-    .card-bottom button {
+    .btn {
+        background-color: #FCBA05;
         padding: 10px;
+        display: inline-block;
         margin-bottom: 5px;
         border: none;
-        background-color: #FCBA05;
         border-radius: 5px;
         cursor: pointer;
+        font-size: 15px;
         font-weight: bold;
+        color: #000;
         transition: .3s;
     }
 
-    .card-bottom button:hover {
+    .btn:hover {
         background-color: #CC9A10;
     }
 </style>

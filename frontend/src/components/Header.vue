@@ -5,9 +5,9 @@
         </router-link>
         <nav>
             <router-link class="nav-link" to="/">Entre ou cadastre-se</router-link>
-            <!-- <router-link class="nav-link" to="/carrinho">
+            <router-link class="nav-link" to="/order-item">
                 <font-awesome-icon icon="fa-solid fa-cart-shopping" id="icon-cart"/>
-            </router-link> -->
+            </router-link>
         </nav>
     </header>
 </template>

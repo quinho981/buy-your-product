@@ -16,17 +16,17 @@ class ProductSeeder extends Seeder
     public function run()
     {
         $product = Product::create([
-            'product_name' => 'Bacia caixa acoplada fit plus branca + ASSENTO – CELITE', 
+            'product_name' => 'Porta de abrir veneziana ventilada branco 2.16x0.88x5.4 direita alumifort alumifort - SASAZAKI   ', 
             'product_image' => Str::random(10),
-            'price' => 878.75,
+            'price' => 2365.50,
         ]);
 
         $product->category()->create([
-            'category_name' => 'Banheiro'
+            'category_name' => 'Portas e janelas'
         ]);
 
         $product->product_description()->create([
-            'description' => 'Bacia para caixa acoplada fit plus branca. Caixa acoplada 3 e 6 litros fit plus branco. Assento polipropileno fit branco.'
+            'description' => 'Variedade de modelos e medidas em produtos de alumínio. Medida (alt x larg x bat) / Abertura: 216 x 88 x 5,4 (cm) x Direita'
         ]);
 
         // $product->order_item()->create([

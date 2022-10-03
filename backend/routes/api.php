@@ -27,7 +27,8 @@ Route::get('/categories', [CategoryController::class, 'show'])->name('categories
 
 Route::get('/descriptions', [ProductDescriptionController::class, 'show'])->name('descriptions');
 
-Route::get('/products', [ProductController::class, 'show'])->name('products');
+Route::get('/products', [ProductController::class, 'getAllProducts'])->name('products');
+Route::get('/products/{id}', [ProductController::class, 'getProduct'])->whereNumber('id')->name('singleProduct');
 
 Route::get('/order_items', [OrderItemController::class, 'show'])->name('order_items');
 

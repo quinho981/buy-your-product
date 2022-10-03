@@ -19,7 +19,8 @@
   const fetchProducts = async () => await api.get("/products")
     .then((response) => {
       products.value = response.data;
-    });
+    })
+    .catch(e => console.log(e));
 
   onMounted(fetchProducts);
 </script>
