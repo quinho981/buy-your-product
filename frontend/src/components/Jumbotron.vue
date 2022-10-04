@@ -2,17 +2,19 @@
     <div class="container">
         <div class="container-details">
             <div class="container-img">
-                <img src="../../public/img/pia.png" alt="">
+                <img src="../../public/img/pia.png" alt="Iamgem do produto">
             </div>
             <div class="container-descriptions">
                 <h2>{{ product.product_name }}</h2>
                 <h4>{{ product.description }}</h4>
                 <p class="value">R${{ product.price }}</p>
-                <form>
-                    <p>Observações:</p>
-                    <textarea name="" id=""></textarea><br>
-                    <p>Quantidade:</p>
-                    <input class="form-input" type="number">
+
+                <form @submit="buyProduct">
+                    <label for="observation">Observações:</label>
+                    <textarea name="observation" v-model="observation" id="observation"></textarea><br>
+
+                    <label for="quantity">Quantidade:</label>
+                    <input class="form-input" name="quantity" v-model="quantity" type="number" min="1" id="quantity">
                     <input class="btn" type="submit" value="Comprar">
                 </form>
             </div>
@@ -21,17 +23,26 @@
         <div class="observations">
             <p>Descrição</p>
             <p>{{ product.description }}</p>
-            <br>
-            <p>Descrição</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         </div>
     </div>
 </template>
 
 <script setup>
+    import { ref } from "@vue/reactivity";
+
+    const observation = ref('');
+    const quantity = ref(1);
+
     const props = defineProps({
         product: Object
     })
+
+    function buyProduct(e) {
+        e.preventDefault();
+
+        console.log(quantity.value);
+        console.log(observation.value);
+    }
 </script>
 
 <style scoped>
