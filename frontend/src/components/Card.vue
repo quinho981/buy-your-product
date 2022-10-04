@@ -4,9 +4,17 @@
             <img src="" alt="">
         </div>
         <div class="card-body">
-            <h4>{{ product.product_name }}</h4>
-            <h6>{{ product.description }}</h6>
-            <p>a partir de R${{ product.price }}</p>
+            <div class="product_title limit">
+                <h4>{{ product.product_name }}</h4>
+            </div>
+
+            <div class="product_description limit">
+                <h6>{{ product.description }}</h6>
+            </div>
+            
+            <p>
+                a partir de <b>R${{ product.price }}</b>
+            </p>
         </div>
         <div class="card-bottom">
             <router-link class="btn" 
@@ -46,7 +54,7 @@
     }
 
     .card-body {
-        padding: 10px 5px 0px 5px;
+        padding: 10px 7px 0px 7px;
         background-color: #fff;
     }
 
@@ -56,8 +64,19 @@
 
     .card-body h6,
     .card-body p {
-        padding: 10px 0;
         font-weight: normal;
+    }
+
+    .product_description {
+        margin: 15px 0;
+    }
+
+    .limit {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
 
     .card-bottom {
@@ -67,6 +86,7 @@
     }
 
     .btn {
+        margin: 5px 0;
         background-color: #FCBA05;
         padding: 10px;
         display: inline-block;

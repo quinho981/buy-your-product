@@ -30,18 +30,20 @@
 <script setup>
     import { ref } from "@vue/reactivity";
 
-    const observation = ref('');
-    const quantity = ref(1);
-
     const props = defineProps({
         product: Object
     })
+
+    const observation = ref('');
+    const quantity = ref(1);
 
     function buyProduct(e) {
         e.preventDefault();
 
         console.log(quantity.value);
         console.log(observation.value);
+
+        // ENVIAR PARA API VIA POST
     }
 </script>
 
