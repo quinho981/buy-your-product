@@ -5,7 +5,6 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDescriptionController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +29,7 @@ Route::get('/descriptions', [ProductDescriptionController::class, 'show'])->name
 Route::get('/products', [ProductController::class, 'getAllProducts'])->name('products');
 Route::get('/products/{id}', [ProductController::class, 'getProduct'])->whereNumber('id')->name('singleProduct');
 
-Route::get('/order_items', [OrderItemController::class, 'show'])->name('order_items');
+Route::get('/order_items', [OrderItemController::class, 'show'])->name('orderItems');
+Route::post('/order_items', [OrderItemController::class, 'store'])->name('orderItemsStore');
 
 Route::get('/order', [OrderController::class, 'show'])->name('order');

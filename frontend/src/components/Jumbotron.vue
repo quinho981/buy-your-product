@@ -9,12 +9,15 @@
                 <h4>{{ product.description }}</h4>
                 <p class="value">R${{ product.price }}</p>
 
-                <form @submit="buyProduct">
+                <form method="POST" @submit="buyProduct">
                     <label for="observation">Observações:</label>
                     <textarea name="observation" v-model="observation" id="observation"></textarea><br>
 
-                    <label for="quantity">Quantidade:</label>
-                    <input class="form-input" name="quantity" v-model="quantity" type="number" min="1" id="quantity">
+                    <div class="block">
+                        <label for="quantity">Quantidade:</label>
+                        <input class="form-input" name="quantity" v-model="quantity" type="text" min="1" id="quantity">
+                    </div>
+                   
                     <input class="btn" type="submit" value="Comprar">
                 </form>
             </div>
@@ -28,8 +31,11 @@
 </template>
 
 <script setup>
+    import api from "@/services/config";
     import { ref } from "@vue/reactivity";
+    import { useRouter } from 'vue-router'
 
+    const router = useRouter();
     const props = defineProps({
         product: Object
     })
@@ -37,13 +43,20 @@
     const observation = ref('');
     const quantity = ref(1);
 
-    function buyProduct(e) {
+    async function buyProduct(e) {
         e.preventDefault();
 
-        console.log(quantity.value);
-        console.log(observation.value);
-
-        // ENVIAR PARA API VIA POST
+        await api.post('/order_items', {
+                product_id: props.product.id,
+                quantity: quantity.value,
+                unit_price: parseFloat(props.product.price),
+                total_price: parseFloat(props.product.price) * quantity.value,
+                observation: observation.value,
+            })
+            .then((response) => {
+                router.push('/order-item');
+            })
+            .catch(e => console.log(e));
     }
 </script>
 
@@ -53,6 +66,11 @@
         margin: 30px auto;
         background-color: #fff;
         border-radius: 5px;
+    }
+
+    .block {
+        display: block;
+        margin: 10px 0;
     }
 
     .container-details {
@@ -92,12 +110,13 @@
     }
 
     .form-input {
-        width: 98.5%;
+        width: 10%;
         border: 1px solid #ccc;
-        font-size: 30px;
+        font-size: 25px;
         border-radius: 5px;
         text-align: center;
         padding: 2px;
+        display: block;
     }
 
     textarea {

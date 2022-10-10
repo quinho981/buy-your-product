@@ -1,5 +1,6 @@
 <template>
     <div>
+        <p>Breadcomb</p>
         <Jumbotron v-for="product in products" :key="product.id" v-bind="{ product }" />
     </div>
 </template>

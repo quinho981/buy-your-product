@@ -30,14 +30,16 @@
     margin: 0 95px;
     justify-content: space-between;
     display: flex;
+    flex-wrap: wrap;
   }
 
   .nav-link {
     color: #222;
     transition: .5s;
+    flex-wrap: wrap;
   }
 
   .nav-link:hover {
-    color: #FCBA05
+    color: #FCBA05;
   }
 </style>
