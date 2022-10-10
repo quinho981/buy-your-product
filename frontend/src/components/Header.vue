@@ -7,6 +7,7 @@
             <router-link class="nav-link" to="/">Entre ou cadastre-se</router-link>
             <router-link class="nav-link" to="/order-item">
                 <font-awesome-icon icon="fa-solid fa-cart-shopping" id="icon-cart"/>
+                <span class="productsCart">1</span>
             </router-link>
         </nav>
     </header>
@@ -38,6 +39,8 @@
 
     nav {
         margin-right: 90px;
+        display: flex;
+        align-items: center;
     }
 
     .nav-link {
@@ -51,6 +54,17 @@
     }
 
     #icon-cart {
-        font-size: 20px;
+        font-size: 30px;
+    }
+
+    .productsCart {
+        color: #fff;
+        background-color: rgb(255, 69, 69);
+        border-radius: 50%;
+        padding: 3px 6px;
+        font-size: 12px;
+        margin-left: -12px;
+        margin-top: -15px;
+        font-weight: bold;
     }
 </style>

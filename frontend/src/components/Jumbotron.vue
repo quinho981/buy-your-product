@@ -63,7 +63,7 @@
 <style scoped>
     .container {
         width: 87%;
-        margin: 30px auto;
+        margin: 20px auto;
         background-color: #fff;
         border-radius: 5px;
     }
