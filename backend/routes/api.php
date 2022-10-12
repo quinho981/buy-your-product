@@ -33,3 +33,4 @@ Route::get('/order_items', [OrderItemController::class, 'show'])->name('orderIte
 Route::post('/order_items', [OrderItemController::class, 'store'])->name('orderItemsStore');
 
 Route::get('/order', [OrderController::class, 'show'])->name('order');
+Route::post('/order', [OrderController::class, 'store'])->name('orderStore');

@@ -33,12 +33,16 @@
 <script setup>
     import api from "@/services/config";
     import { ref } from "@vue/reactivity";
-    import { useRouter } from 'vue-router'
+    import { useRouter } from 'vue-router';
+    import { useStore } from 'vuex';
 
+    const store = useStore();
     const router = useRouter();
     const props = defineProps({
         product: Object
-    })
+    });
+
+    const date = new Date().toLocaleString();
 
     const observation = ref('');
     const quantity = ref(1);
@@ -46,17 +50,35 @@
     async function buyProduct(e) {
         e.preventDefault();
 
-        await api.post('/order_items', {
-                product_id: props.product.id,
-                quantity: quantity.value,
-                unit_price: parseFloat(props.product.price),
-                total_price: parseFloat(props.product.price) * quantity.value,
-                observation: observation.value,
-            })
-            .then((response) => {
-                router.push('/order-item');
+        let orderID = localStorage.getItem('order_id');
+
+        if(!orderID) {
+            store.dispatch('createOrder', {
+                total: 0,
+                status: 'in_cart',
+                order_created: date
+            }).then((response) => {
+                orderID = response.data.id;
+
+                insertCart(orderID);
             })
             .catch(e => console.log(e));
+        } else {
+            insertCart(orderID);
+        }
+
+        router.push('/order-item');
+    }
+
+    function insertCart(orderID) {
+        store.dispatch('insertCart', {
+            product_id: props.product.id,
+            order_id: parseInt(orderID),
+            quantity: parseInt(quantity.value),
+            unit_price: parseFloat(props.product.price),
+            total_price: parseFloat(props.product.price) * quantity.value,
+            observation: observation.value,
+        });
     }
 </script>
 

@@ -7,14 +7,17 @@
             <router-link class="nav-link" to="/">Entre ou cadastre-se</router-link>
             <router-link class="nav-link" to="/order-item">
                 <font-awesome-icon icon="fa-solid fa-cart-shopping" id="icon-cart"/>
-                <span class="productsCart">1</span>
+                <span class="productsCart">{{ store.state.cart.length }}</span>
             </router-link>
         </nav>
     </header>
 </template>
 
 <script setup>
+    import { useStore } from 'vuex';
 
+    const store = useStore();
+    //let productsInCart = JSON.parse(localStorage.getItem('cart'));
 </script>
 
 <style scoped>

@@ -14,10 +14,9 @@ class OrderItemController extends Controller
     }
 
     public function store(Request $request) {
-        //$novo = $request->input('observation');
-
         $validated = $request->validate([
             'product_id' => 'required',
+            'order_id' => 'nullable',
             'quantity' => 'bail|required|min:1',
             'unit_price' => 'required',
             'total_price' => 'required',

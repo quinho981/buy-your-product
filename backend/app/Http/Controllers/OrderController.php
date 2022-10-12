@@ -12,4 +12,10 @@ class OrderController extends Controller
 
         return $order;
     }
+
+    public function store(Request $request) {
+        $order = Order::create($request->all());
+
+        return $order;
+    }
 }
