@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class OrderItemController extends Controller
 {
-    public function show() {
+    public function getAllItems() {
         $order_item = OrderItem::all();
 
         return $order_item;

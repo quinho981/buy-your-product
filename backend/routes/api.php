@@ -29,8 +29,9 @@ Route::get('/descriptions', [ProductDescriptionController::class, 'show'])->name
 Route::get('/products', [ProductController::class, 'getAllProducts'])->name('products');
 Route::get('/products/{id}', [ProductController::class, 'getProduct'])->whereNumber('id')->name('singleProduct');
 
-Route::get('/order_items', [OrderItemController::class, 'show'])->name('orderItems');
+Route::get('/order_items', [OrderItemController::class, 'getAllItems'])->name('orderItems');
 Route::post('/order_items', [OrderItemController::class, 'store'])->name('orderItemsStore');
 
-Route::get('/order', [OrderController::class, 'show'])->name('order');
-Route::post('/order', [OrderController::class, 'store'])->name('orderStore');
+Route::get('/orders', [OrderController::class, 'getOrders'])->name('orders');
+Route::get('/orders/{id}', [OrderController::class, 'getItemsByOrder'])->name('itemsByOrder');
+Route::post('/orders', [OrderController::class, 'store'])->name('orderStore');

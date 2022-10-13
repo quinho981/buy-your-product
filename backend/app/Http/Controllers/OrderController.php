@@ -3,19 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function show() {
-        $order = Order::all();
+    public function getOrders() {
 
-        return $order;
+        return Order::all();
+    }
+
+    public function getItemsByOrder($id) {
+        
+        return OrderItem::where('order_id', $id)->get();
     }
 
     public function store(Request $request) {
-        $order = Order::create($request->all());
 
-        return $order;
+        return Order::create($request->all());
     }
 }

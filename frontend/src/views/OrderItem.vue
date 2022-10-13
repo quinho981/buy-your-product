@@ -14,21 +14,21 @@
           <div class="item grow-1 center">Sub-total</div>
         </div>
         <hr>
-        <div class="cart-section-body">
+        <div class="cart-section-body" v-for="item in items" :key="item.id">
           <div class="item grow-5">
-            <p>Vaso sanitário</p>
+            <p>{{ item.product_id }}</p>
           </div>
 
           <div class="item grow-1">
-            <p>R$20,90</p>
+            <p>R${{ item.unit_price }}</p>
           </div>
 
           <div class="item grow-1 center">
-            <p>2</p>
+            <p>{{ item.quantity }}</p>
           </div>
 
           <div class="item grow-1 center">
-            <p>R$41,80</p>
+            <p>R${{ item.total_price }}</p>
           </div>
         </div>
         <hr>
@@ -62,7 +62,22 @@
 </template>
 
 <script setup>
+  import api from '@/services/config';
+  import { ref } from '@vue/reactivity';
+  import { onMounted } from '@vue/runtime-core';
 
+  const orderID = localStorage.getItem('order_id');
+  const items = ref([]);
+
+  if(orderID) {
+    const fetchItems = async () => await api.get(`/orders/${orderID}`)
+      .then((response) => {
+        items.value = response.data;
+      })
+      .catch(e => console.log(e));
+
+    onMounted(fetchItems);
+  }
 </script>
 
 <style scoped>

@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <div class="card-header">
-            <img src="" alt="">
+            <img :src="`${baseUrlImage}storage/${product.product_image}`" :alt="`Imagem do produto: ${product.product_name}`">
         </div>
         <div class="card-body">
             <div class="product_title limit">
@@ -31,13 +31,15 @@
 </template>
 
 <script setup>
+    import api from "@/services/config";
     import { useRouter } from 'vue-router';
 
     const router = useRouter();
-
     const props = defineProps({
         product: Object
-    })
+    });
+
+    const baseUrlImage = api.defaults.baseURL.replace('/api', '');
 </script>
 
 <style scoped>
@@ -48,8 +50,13 @@
     }
 
     .card-header {
-        background-color: gray;
         height: 150px;
+        border-radius: 5px 5px 0px 0px;
+    }
+
+    img {
+        width: 100%;
+        max-height: 150px;
         border-radius: 5px 5px 0px 0px;
     }
 

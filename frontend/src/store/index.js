@@ -27,7 +27,7 @@ export default createStore({
     createOrder( { commit }, payload) {
 
       return new Promise((resolve, reject) => {
-        api.post('/order', payload)
+        api.post('/orders', payload)
           .then((response) => {
             commit('createOrder', response.data.id);
             resolve(response);

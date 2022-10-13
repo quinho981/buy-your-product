@@ -2,7 +2,7 @@
     <div class="container">
         <div class="container-details">
             <div class="container-img">
-                <img src="../../public/img/pia.png" alt="Iamgem do produto">
+                <img :src="`${baseUrlImage}storage/${product.product_image}`" :alt="`Imagem do produto: ${product.product_name}`">
             </div>
             <div class="container-descriptions">
                 <h2>{{ product.product_name }}</h2>
@@ -15,10 +15,12 @@
 
                     <div class="block">
                         <label for="quantity">Quantidade:</label>
-                        <input class="form-input" name="quantity" v-model="quantity" type="text" min="1" id="quantity">
+
+                        <div class="finish">
+                            <input class="form-input" name="quantity" v-model="quantity" type="number" min="1" id="quantity">
+                            <input class="btn" type="submit" value="Comprar">
+                        </div>
                     </div>
-                   
-                    <input class="btn" type="submit" value="Comprar">
                 </form>
             </div>
         </div>
@@ -42,7 +44,8 @@
         product: Object
     });
 
-    const date = new Date().toLocaleString();
+    const baseUrlImage = api.defaults.baseURL.replace('/api', '');
+    const date = new Date().toLocaleString(); /* ========== APAGAR CÓDIGO QUANDO REMOVER COLUNA DO BANCO ========== */
 
     const observation = ref('');
     const quantity = ref(1);
@@ -56,7 +59,7 @@
             store.dispatch('createOrder', {
                 total: 0,
                 status: 'in_cart',
-                order_created: date
+                order_created: date /* ========== APAGAR CÓDIGO QUANDO REMOVER COLUNA DO BANCO ========== */
             }).then((response) => {
                 orderID = response.data.id;
 
@@ -74,7 +77,7 @@
         store.dispatch('insertCart', {
             product_id: props.product.id,
             order_id: parseInt(orderID),
-            quantity: parseInt(quantity.value),
+            quantity: quantity.value,
             unit_price: parseFloat(props.product.price),
             total_price: parseFloat(props.product.price) * quantity.value,
             observation: observation.value,
@@ -100,14 +103,12 @@
     }
     
     .container-img {
-        flex-grow: 1;
         padding: 10px;
-        border-radius: 5px 0px 0px 5px;
         text-align: center;
     }
 
     .container-img img {
-        width: 70%;
+        width: 100%;
     }
 
     .container-descriptions {
@@ -137,8 +138,7 @@
         font-size: 25px;
         border-radius: 5px;
         text-align: center;
-        padding: 2px;
-        display: block;
+        padding: 0px;
     }
 
     textarea {
@@ -155,9 +155,9 @@
         font-size: 20px;
         padding: 10px 30px;
         border-radius: 5px;
-        margin-top: 10px;
         background-color: #FCBA05;
         cursor: pointer;
+        margin-right: 3px;
     }
 
     .btn:hover {
@@ -175,5 +175,10 @@
 
     .observations {
         padding: 0px 5px 10px 15px;
+    }
+
+    .finish {
+        display: flex;
+        justify-content: space-between;
     }
 </style>
